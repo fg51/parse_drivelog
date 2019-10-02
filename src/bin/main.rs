@@ -6,7 +6,8 @@ use std::io::BufReader;
 //use std::io;
 use std::process;
 
-use lib::Record;
+use lib::record::Record;
+use lib::AverageBuilder;
 
 fn run() -> Result<(), Box<dyn Error>> {
     let finn = BufReader::new(fs::File::open("log.csv")?);
@@ -19,17 +20,16 @@ fn run() -> Result<(), Box<dyn Error>> {
 
     let mut data: Vec<Record> = vec![];
     for i in rdr.deserialize() {
-        data.push(Record::new(i?));
+        data.push(Record::from_raw(i?));
     }
-    let speed_ave = data.iter().map(|x| x.speed).fold(0., |sum, x| sum + x) / data.len() as f64;
 
-    let current_motor_ave = data
-        .iter()
-        .map(|x| x.current_motor.ave)
-        .fold(0., |sum, x| sum + x)
-        / data.len() as f64;
+    let mut ave = AverageBuilder::new(data.len());
+    ave.setup(data);
+    let ave = ave.build();
 
-    println!("speed: {}", speed_ave);
+    // println!("speed: {}", ave.speed);
+    // println!("displacement.x1: {}", ave.displacement.x1);
+    println!("{:?}", ave);
 
     Ok(())
 }
