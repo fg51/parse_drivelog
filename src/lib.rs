@@ -148,3 +148,55 @@ pub struct RawRecord {
     pub drive_time: f64,        //[hrs]
     pub cumulated_hour: f64,    // [hrs]
 }
+
+// fn to_average(xs: Vec<Record>) -> Record {
+//     // let speed_ave = data.iter().map(|x| x.speed).fold(0., |sum, x| sum + x) / data.len() as f64;
+//     let length = xs.len() as f64;
+//
+//     Self {
+//         date_time: "".to_string(),
+//         passed_sec: 0.0,
+//         speed: fold_ave(length, xs.iter().map(|x| x.rated_speed)),
+//         rated_speed: xs.iter().map(|x| x.rated_speed).fold(0., |sum, x| sum + x) / length,
+//         speed_ratio: r.speed_ratio,
+//
+//         current_motor: CurrentMotor {
+//             u: r.current_motor0,
+//             v: r.current_motor1,
+//             w: r.current_motor2,
+//             ave: r.current_motor_ave,
+//         },
+//         temparature: Temparature {
+//             motor: r.temparature_motor,
+//             pk: r.temparature_pk,
+//             main: r.temparature_main,
+//             case: r.temparature_case,
+//         },
+//         displacement: Displacement {
+//             x1: r.disp_x1,
+//             y1: r.disp_y1,
+//             x2: r.disp_x2,
+//             y2: r.disp_y2,
+//             z: r.disp_z,
+//             r1: r.disp_r1,
+//             r2: r.disp_r2,
+//         },
+//         emag: Emag {
+//             x1_p: r.emag_x1_p,
+//             x1_n: r.emag_x1_n,
+//             y1_p: r.emag_y1_p,
+//             y1_n: r.emag_y1_n,
+//             x2_p: r.emag_x2_p,
+//             x2_n: r.emag_x2_n,
+//             y2_p: r.emag_y2_p,
+//             y2_n: r.emag_y2_n,
+//             z1_p: r.emag_z1_p,
+//             z1_n: r.emag_z1_n,
+//         },
+//
+//         unb_upper: r.unb_upper,
+//         unb_lower: r.unb_lower,
+//         drive_time: r.drive_time,
+//         cumulated_hour: r.cumulated_hour,
+//     }
+// }

@@ -22,11 +22,12 @@ fn run() -> Result<(), Box<dyn Error>> {
         data.push(Record::new(i?));
     }
     let speed_ave = data.iter().map(|x| x.speed).fold(0., |sum, x| sum + x) / data.len() as f64;
-    // let current_motor_ave = data
-    //     .iter()
-    //     .map(|x| x.current_motor.ave)
-    //     .fold(0., |sum, x| sum + x)
-    //     / data.len() as f64;
+
+    let current_motor_ave = data
+        .iter()
+        .map(|x| x.current_motor.ave)
+        .fold(0., |sum, x| sum + x)
+        / data.len() as f64;
 
     println!("speed: {}", speed_ave);
 
